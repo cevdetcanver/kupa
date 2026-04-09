@@ -1000,6 +1000,34 @@
 }
   
 
+  
+/* Accordion takvim */
+.phase-block .weeks-grid {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.phase-block.open .weeks-grid {
+  max-height: 2000px;
+}
+.accordion-toggle {
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+.accordion-hint {
+  font-size: 0.7rem;
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+  display: inline-block;
+  opacity: 0.6;
+}
+.phase-block.open .accordion-hint {
+  transform: rotate(180deg);
+}
+.accordion-toggle:hover {
+  opacity: 0.85;
+}
   </style>
 </head>
 <body>
@@ -1129,9 +1157,10 @@
 
     <!-- KUPA DUO PHASE -->
     <div class="phase-block duo">
-      <div class="phase-label">
-        <span class="arrow">➤</span>
+      <div class="phase-label accordion-toggle" onclick="this.parentElement.classList.toggle('open')">
+        <span class="arrow accordion-arrow">➤</span>
         KUPA DUO
+        <span class="accordion-hint">▼</span>
       </div>
       <div class="phase-dates">14 Nisan – 02 Haziran</div>
 
@@ -1213,9 +1242,10 @@
 
     <!-- KUPA MASASI PHASE -->
     <div class="phase-block masasi">
-      <div class="phase-label">
-        <span class="arrow">➤</span>
+      <div class="phase-label accordion-toggle" onclick="this.parentElement.classList.toggle('open')">
+        <span class="arrow accordion-arrow">➤</span>
         KUPA MASASI
+        <span class="accordion-hint">▼</span>
       </div>
       <div class="phase-dates">23 Haziran – 21 Temmuz</div>
 
