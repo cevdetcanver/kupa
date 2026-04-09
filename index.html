@@ -1000,6 +1000,34 @@
 }
   
 
+  
+/* Accordion takvim */
+.phase-block .weeks-grid {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.phase-block.open .weeks-grid {
+  max-height: 2000px;
+}
+.accordion-toggle {
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+.accordion-hint {
+  font-size: 0.7rem;
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+  display: inline-block;
+  opacity: 0.6;
+}
+.phase-block.open .accordion-hint {
+  transform: rotate(180deg);
+}
+.accordion-toggle:hover {
+  opacity: 0.85;
+}
   </style>
 </head>
 <body>
@@ -1084,9 +1112,10 @@
 
     <!-- KUPA DUO PHASE -->
     <div class="phase-block duo">
-      <div class="phase-label">
-        <span class="arrow">➤</span>
+      <div class="phase-label accordion-toggle" onclick="this.parentElement.classList.toggle('open')">
+        <span class="arrow accordion-arrow">➤</span>
         KUPA DUO
+        <span class="accordion-hint">▼</span>
       </div>
       <div class="phase-dates">14 Nisan – 02 Haziran</div>
 
@@ -1168,9 +1197,10 @@
 
     <!-- KUPA MASASI PHASE -->
     <div class="phase-block masasi">
-      <div class="phase-label">
-        <span class="arrow">➤</span>
+      <div class="phase-label accordion-toggle" onclick="this.parentElement.classList.toggle('open')">
+        <span class="arrow accordion-arrow">➤</span>
         KUPA MASASI
+        <span class="accordion-hint">▼</span>
       </div>
       <div class="phase-dates">23 Haziran – 21 Temmuz</div>
 
@@ -1323,8 +1353,16 @@
         </div>
       </div>
       <div class="cpv-row">
+        <span class="cpv-label">BÜTÇE</span>
+        <span class="cpv-value">₺1.400.000</span>
+      </div>
+      <div class="cpv-row">
         <span class="cpv-label">TAHMİNİ TOPLAM GÖRÜNTÜLEME</span>
         <span class="cpv-value">~2.32M</span>
+      </div>
+      <div class="cpv-row highlight">
+        <span class="cpv-label">CPV (Cost Per View)</span>
+        <span class="cpv-value accent">₺0,60</span>
       </div>
     </div>
 
@@ -1353,8 +1391,16 @@
         </div>
       </div>
       <div class="cpv-row">
+        <span class="cpv-label">BÜTÇE</span>
+        <span class="cpv-value">₺2.600.000</span>
+      </div>
+      <div class="cpv-row">
         <span class="cpv-label">TAHMİNİ TOPLAM GÖRÜNTÜLEME</span>
         <span class="cpv-value">~5.66M</span>
+      </div>
+      <div class="cpv-row highlight">
+        <span class="cpv-label">CPV (Cost Per View)</span>
+        <span class="cpv-value accent">₺0,46</span>
       </div>
     </div>
   </div>
@@ -1526,7 +1572,16 @@
       <span class="total-all">210 İÇERİK</span>
       <span class="total-views">~7.98M TAHMİNİ GÖRÜNTÜLEME</span>
     </div>
-    
+    <div class="grand-cpv-section">
+      <div class="cpv-row">
+        <span class="cpv-label">TOPLAM BÜTÇE</span>
+        <span class="cpv-value">₺4.000.000 +KDV</span>
+      </div>
+      <div class="cpv-row highlight">
+        <span class="cpv-label">GENEL CPV (Cost Per View)</span>
+        <span class="cpv-value accent big">₺0,50</span>
+      </div>
+    </div>
   </div>
 
 
