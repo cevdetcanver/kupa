@@ -1426,7 +1426,7 @@
 
   @media (max-width: 768px) {
     .hero-section { grid-template-columns: 1fr; }
-    .hero-logos { max-height: 220px; }
+    .hero-logos { max-height: none; height: auto; }
     .hero-text { padding: 20px; }
     .hero-title { font-size: 26px; }
     .hero-subtitle { font-size: 22px; }
