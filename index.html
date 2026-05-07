@@ -962,6 +962,13 @@
   .video-card.upcoming .video-card-thumb::before {
     display: none;
   }
+  /* Centered pulse keeps the translate(-50%,-50%) baked into the keyframe
+     so the badge doesn't snap to top-left when the scale animation overrides
+     the static transform. */
+  @keyframes pulse-upcoming {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50%      { transform: translate(-50%, -50%) scale(1.15); }
+  }
   .upcoming-badge {
     position: absolute;
     top: 50%;
@@ -976,20 +983,17 @@
     border-radius: 4px;
     border: 1px solid rgba(255,255,255,0.18);
     box-shadow: 0 4px 16px rgba(0,0,0,0.55);
-    animation: pulse-yayinda 1.2s ease-in-out infinite;
+    animation: pulse-upcoming 1.2s ease-in-out infinite;
     z-index: 3;
     white-space: nowrap;
   }
   .video-card.upcoming .video-card-title {
-    text-align: center;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 16px;
-    letter-spacing: 1.5px;
-    color: var(--text-muted);
-    display: block;
+    /* Inherit live card style (red EP + white title), but no 4-line clamp
+       since the date is short. */
     min-height: auto;
-    padding: 14px 12px;
-    text-transform: uppercase;
+    -webkit-line-clamp: unset;
+    display: block;
+    letter-spacing: 1px;
   }
 
   @media (max-width: 900px) {
@@ -1011,7 +1015,6 @@
       letter-spacing: 1.8px;
       padding: 7px 13px;
     }
-    .video-card.upcoming .video-card-title { font-size: 14px; padding: 11px 10px; }
     .show-card h2 .yayinda-badge {
       font-size: 10px;
       vertical-align: 5px;
@@ -1338,35 +1341,35 @@
             <img src="kupaduo1-son-sunum.jpeg" alt="Gelecek bölüm — 10 Mayıs" loading="lazy">
             <div class="upcoming-badge">GELECEK BÖLÜM</div>
           </div>
-          <div class="video-card-title">10 Mayıs</div>
+          <div class="video-card-title"><span class="video-card-ep">KUPA DUO #04</span>10 MAYIS</div>
         </div>
         <div class="video-card upcoming">
           <div class="video-card-thumb">
             <img src="kupaduo1-son-sunum.jpeg" alt="Gelecek bölüm — 17 Mayıs Pazar" loading="lazy">
             <div class="upcoming-badge">GELECEK BÖLÜM</div>
           </div>
-          <div class="video-card-title">17 Mayıs Pazar</div>
+          <div class="video-card-title"><span class="video-card-ep">KUPA DUO #05</span>17 MAYIS PAZAR</div>
         </div>
         <div class="video-card upcoming">
           <div class="video-card-thumb">
             <img src="kupaduo1-son-sunum.jpeg" alt="Gelecek bölüm — 24 Mayıs Pazar" loading="lazy">
             <div class="upcoming-badge">GELECEK BÖLÜM</div>
           </div>
-          <div class="video-card-title">24 Mayıs Pazar</div>
+          <div class="video-card-title"><span class="video-card-ep">KUPA DUO #06</span>24 MAYIS PAZAR</div>
         </div>
         <div class="video-card upcoming">
           <div class="video-card-thumb">
             <img src="kupaduo1-son-sunum.jpeg" alt="Gelecek bölüm — 31 Mayıs Pazar" loading="lazy">
             <div class="upcoming-badge">GELECEK BÖLÜM</div>
           </div>
-          <div class="video-card-title">31 Mayıs Pazar</div>
+          <div class="video-card-title"><span class="video-card-ep">KUPA DUO #07</span>31 MAYIS PAZAR</div>
         </div>
         <div class="video-card upcoming">
           <div class="video-card-thumb">
             <img src="kupaduo1-son-sunum.jpeg" alt="Gelecek bölüm — 2 Haziran Salı" loading="lazy">
             <div class="upcoming-badge">GELECEK BÖLÜM</div>
           </div>
-          <div class="video-card-title">2 Haziran Salı</div>
+          <div class="video-card-title"><span class="video-card-ep">KUPA DUO #08</span>2 HAZİRAN SALI</div>
         </div>
       </div>
     </div>
