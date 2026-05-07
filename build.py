@@ -53,6 +53,19 @@ def main():
         cfg["out"].write_text(rendered, encoding="utf-8")
         print(f"OK  {cfg['out'].relative_to(ROOT)}  ({len(rendered):,} bytes)")
 
+    # Generate PDF + Excel exports (best-effort; içerik değiştiyse yenile)
+    try:
+        from export_pdf_excel import build_pdf, build_excel
+        ASSETS = ROOT / "assets"
+        pdf_path = ASSETS / "kupa-sunum.pdf"
+        xlsx_path = ASSETS / "kupa-paketler.xlsx"
+        build_pdf(pdf_path)
+        print(f"OK  {pdf_path.relative_to(ROOT)}  ({pdf_path.stat().st_size:,} bytes)")
+        build_excel(xlsx_path)
+        print(f"OK  {xlsx_path.relative_to(ROOT)}  ({xlsx_path.stat().st_size:,} bytes)")
+    except ImportError as e:
+        print(f"  ! export_pdf_excel atlandı: {e}")
+
 
 if __name__ == "__main__":
     main()

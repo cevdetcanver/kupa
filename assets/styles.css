@@ -266,6 +266,12 @@
     font-size: 16px;
   }
 
+  .phase-block.duo {
+    border-left: 3px solid var(--accent-duo);
+  }
+  .phase-block.masasi {
+    border-left: 3px solid var(--accent-masasi);
+  }
   .phase-block.duo .phase-label { color: var(--accent-duo); }
   .phase-block.duo .phase-label .arrow { background: var(--accent-duo); color: #fff; }
   .phase-block.masasi .phase-label { color: var(--accent-masasi); }
@@ -379,14 +385,16 @@
 
   .summary-box.duo h4 { color: var(--accent-duo); }
   .summary-box.masasi h4 { color: var(--accent-masasi); }
+  .summary-box.masasi { border-top: 3px solid var(--gold); }
 
   .grand-total {
-    background: linear-gradient(135deg, #1a1d24, #22262e);
-    border: 1px solid var(--gold);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-top: 3px solid var(--gold);
     border-radius: 12px;
-    padding: 28px;
+    padding: 18px 28px;
     text-align: center;
-    margin-top: 24px;
+    margin-top: 0;
     position: relative;
     overflow: hidden;
     animation: fadeUp 0.6s ease both;
@@ -403,15 +411,15 @@
 
   .grand-total h4 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 24px;
+    font-size: 22px;
     letter-spacing: 3px;
     color: var(--gold-light);
-    margin-bottom: 20px;
+    margin-bottom: 12px;
   }
 
   .grand-total-bottom {
-    margin-top: 20px;
-    padding-top: 16px;
+    margin-top: 12px;
+    padding-top: 10px;
     border-top: 1px solid rgba(212,168,67,0.2);
   }
 
@@ -678,7 +686,54 @@
 
   /* ─── INTEGRATION TYPES ─── */
   .integration-section {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-left: 3px solid var(--gold);
+    border-radius: 16px;
+    padding: 28px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+  .integration-section .phase-label { color: var(--accent-duo); }
+  .integration-section .phase-label .arrow { background: var(--accent-duo); color: #fff; }
+
+  /* Download buttons (PDF + Excel) above footer */
+  .download-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
     margin-top: 48px;
+    flex-wrap: wrap;
+  }
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 22px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 999px;
+    color: var(--text);
+    text-decoration: none;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+  }
+  .download-btn:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: #181818;
+    transform: translateY(-2px);
+  }
+  .download-btn svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+  @media (max-width: 600px) {
+    .download-btn { font-size: 12px; padding: 10px 16px; }
+    .download-btn svg { width: 16px; height: 16px; }
   }
 
   .integ-compact {
@@ -1044,18 +1099,38 @@
     grid-template-columns: 1fr 1fr;
     gap: 40px;
     align-items: stretch;
-    background: var(--card-bg);
+    background: #000;
     border: 1px solid var(--card-border);
+    border-top: 3px solid var(--accent-duo);
     border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.45);
     overflow: hidden;
     margin-bottom: 48px;
+    position: relative;
     animation: fadeUp 0.5s ease both;
   }
 
+  .hero-col-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
   .hero-logos {
-    align-self: center;
+    width: 100%;
     overflow: hidden;
     background: transparent;
+    position: relative;
+  }
+
+  .hero-logo-link {
+    display: block;
+    transition: opacity 0.3s ease;
+  }
+  .hero-logo-link.hidden {
+    opacity: 0;
+    pointer-events: none;
   }
 
   .hero-logo-grid {
@@ -1063,6 +1138,188 @@
     height: auto;
     display: block;
     background: transparent;
+  }
+
+  /* CRT TV static overlay */
+  .hero-tv-noise {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 4;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.85'/></svg>");
+    background-size: 200px 200px;
+    transition: opacity 0.15s ease;
+    mix-blend-mode: screen;
+  }
+  .hero-tv-noise::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0,0,0,0.18) 0,
+      rgba(0,0,0,0.18) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    pointer-events: none;
+  }
+  .hero-tv-noise::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(transparent, rgba(255,255,255,0.06) 50%, transparent);
+    animation: tv-rolling 2.4s linear infinite;
+    pointer-events: none;
+  }
+  .hero-tv-noise.active {
+    opacity: 1;
+    animation: tv-static 0.08s steps(4) infinite;
+  }
+  @keyframes tv-static {
+    0%   { background-position: 0 0; }
+    25%  { background-position: -50px -30px; }
+    50%  { background-position: 30px 60px; }
+    75%  { background-position: -20px 80px; }
+    100% { background-position: 60px -40px; }
+  }
+  @keyframes tv-rolling {
+    0%   { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+  }
+
+  /* Video reveal */
+  .hero-tv-video {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    background: #000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s ease;
+  }
+  .hero-tv-video.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .hero-tv-video iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+    pointer-events: none;
+  }
+
+  /* Audio controls (icon-only mute + volume slider) — D20 ile aynı hizada */
+  .audio-controls {
+    position: absolute;
+    bottom: 50px;
+    left: 25%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 12px 6px 10px;
+    background: rgba(0,0,0,0.7);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 999px;
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 6;
+  }
+  .audio-controls.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .audio-btn {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  .audio-btn:hover { color: var(--accent-duo); }
+  .audio-btn svg { width: 18px; height: 18px; fill: currentColor; display: block; }
+  .audio-btn .ic-unmuted { display: none; }
+  .audio-btn.is-on .ic-muted { display: none; }
+  .audio-btn.is-on .ic-unmuted { display: block; }
+  .volume-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 80px;
+    height: 4px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+  }
+  .volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .volume-slider:hover::-webkit-slider-thumb { background: var(--accent-duo); }
+  .volume-slider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    border-radius: 50%;
+    border: 0;
+    cursor: pointer;
+  }
+  .volume-slider:hover::-moz-range-thumb { background: var(--accent-duo); }
+
+  /* Replay button (video bittikten sonra) */
+  .replay-btn {
+    position: absolute;
+    bottom: 50px;
+    left: 25%;
+    transform: translateX(-50%);
+    z-index: 6;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 999px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    transition: opacity 0.4s ease, background 0.2s ease, color 0.2s ease;
+    pointer-events: none;
+  }
+  .replay-btn.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .replay-btn:hover {
+    background: var(--accent-duo);
+    color: #fff;
+  }
+  .replay-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    display: block;
   }
 
   .hero-text {
@@ -1233,8 +1490,8 @@
   max-height: 5000px;
   opacity: 1;
 }
-/* When closed, also hide the YAYINDA — Bölümler subtitle for a clean fold */
-.phase-block.duo:not(.open) .phase-dates {
+/* When closed, hide the dates/subtitle for a clean fold (all phase-blocks) */
+.phase-block:not(.open) .phase-dates {
   display: none;
 }
 .accordion-toggle {
@@ -1249,9 +1506,245 @@
   display: inline-block;
   opacity: 0.6;
 }
-.phase-block.open .accordion-hint {
+.phase-block.open .accordion-hint,
+.integration-section.open .accordion-hint {
   transform: rotate(180deg);
 }
 .accordion-toggle:hover {
   opacity: 0.85;
+}
+
+/* Integration section accordion (Entegrasyon Çeşitleri) */
+.integration-section .integ-compact {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  margin-top: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
+}
+.integration-section.open .integ-compact {
+  max-height: 8000px;
+  opacity: 1;
+  margin-top: 24px;
+}
+.integration-section .timeline-header.accordion-toggle h3 .accordion-hint {
+  margin-left: 12px;
+  font-size: 0.6em;
+  opacity: 0.6;
+  display: inline-block;
+  transition: transform 0.3s ease;
+  vertical-align: middle;
+}
+
+/* ─── DİĞER BÜTÇELER + PAKETLER (extra-pricing) ─── */
+.phase-block.extra {
+  border-left: 3px solid var(--gold);
+  margin-top: 32px;
+}
+.phase-block.extra .phase-label { color: var(--gold); }
+.phase-block.extra .phase-label .arrow { background: var(--gold); color: #181818; }
+.phase-block.extra .phase-dates { color: var(--text-muted); font-style: italic; }
+
+/* Akordiyon davranışı — budget-grid + packages-grid de hidden olsun */
+.phase-block .budget-grid,
+.phase-block .packages-grid {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
+  opacity: 0;
+  margin-top: 0;
+}
+.phase-block.open .budget-grid,
+.phase-block.open .packages-grid {
+  max-height: 8000px;
+  opacity: 1;
+  margin-top: 18px;
+}
+
+/* Diğer Bütçeler — kart grid */
+.budget-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.budget-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+}
+.budget-item:hover {
+  border-color: var(--gold);
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 4px 14px rgba(212,168,67,0.12);
+}
+.budget-item.featured {
+  border-color: rgba(212,168,67,0.55);
+  background: linear-gradient(135deg, rgba(212,168,67,0.10), rgba(212,168,67,0.02));
+}
+.budget-item-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.budget-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 1.5px;
+  color: var(--text);
+  margin: 0;
+}
+.budget-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px;
+  letter-spacing: 1px;
+  color: var(--gold-light);
+  white-space: nowrap;
+}
+.budget-desc {
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Paketler — kart grid */
+.packages-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.package-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--card-border);
+  border-top: 3px solid var(--gold);
+  border-radius: 12px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+.package-card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.18);
+}
+.package-card.tier-bronz { border-top-color: #cd7f32; }
+.package-card.tier-gumus { border-top-color: #c0c8d0; }
+.package-card.tier-altin { border-top-color: var(--gold); }
+.package-card.tier-ozel  { border-top-color: var(--accent-duo); }
+.package-card.tier-elmas { border-top-color: #b9f2ff; }
+.package-head { display: flex; flex-direction: column; gap: 2px; }
+.package-tier {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px;
+  letter-spacing: 2.5px;
+  opacity: 0.75;
+}
+.package-card.tier-bronz .package-tier { color: #e0a566; }
+.package-card.tier-gumus .package-tier { color: #d8e0e8; }
+.package-card.tier-altin .package-tier { color: var(--gold-light); }
+.package-card.tier-ozel  .package-tier { color: var(--accent-duo); }
+.package-card.tier-elmas .package-tier { color: #c9f4ff; }
+.package-tagline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.8px;
+  color: var(--text);
+  margin: 0;
+  font-style: italic;
+}
+.package-includes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.incl-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  padding: 3px 9px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.10);
+  color: var(--text);
+}
+.package-prices {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.price-old {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  color: var(--text-muted);
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+.price-new {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 1px;
+  color: var(--gold-light);
+}
+.price-save {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--green-dark);
+  color: #fff;
+  margin-left: auto;
+  white-space: nowrap;
+}
+.package-desc {
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* GENEL TOPLAM bütçe satırına ENTEGRASYON FORMATI etiketi */
+.cpv-value-stack {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+.cpv-format-badge {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: rgba(212,168,67,0.15);
+  border: 1px solid rgba(212,168,67,0.4);
+  color: var(--gold-light);
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .budget-grid,
+  .packages-grid { grid-template-columns: 1fr; }
+  .package-card { padding: 18px; }
+  .package-tagline { font-size: 20px; }
+  .price-new { font-size: 24px; }
+  .budget-name { font-size: 20px; }
+  .budget-price { font-size: 22px; }
+  .cpv-value-stack { align-items: flex-start; }
 }

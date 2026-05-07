@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Kupa Duo & Kupa Masası - İçerik Planı</title>
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -17,8 +18,23 @@
   
 <!-- HERO INTRO -->
   <div class="hero-section">
-    <div class="hero-logos">
-      <a href="https://www.youtube.com/@Crossover-Sports" target="_blank"><img class="hero-logo-grid" src="header-logo.png" alt="Crossover Sports" loading="eager"></a>
+    <div class="hero-col-left">
+      <div class="hero-logos">
+        <a class="hero-logo-link" href="https://www.youtube.com/@Crossover-Sports" target="_blank"><img class="hero-logo-grid" src="header-logo.png" alt="Crossover Sports" loading="eager"></a>
+        <div class="hero-tv-noise" aria-hidden="true"></div>
+        <div class="hero-tv-video" aria-hidden="true"></div>
+      </div>
+      <div class="audio-controls" id="audio-controls">
+        <button class="audio-btn" id="audio-btn" type="button" aria-label="Sesi aç/kapat">
+          <svg class="ic-muted" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+          <svg class="ic-unmuted" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+        </button>
+        <input type="range" class="volume-slider" id="volume-slider" min="0" max="100" value="30" aria-label="Ses seviyesi">
+      </div>
+      <button class="replay-btn" id="replay-btn" type="button" aria-label="Tekrar izle">
+        <svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
+        <span>Tekrar İzle</span>
+      </button>
     </div>
     <div class="hero-text">
       <h1 class="hero-title">HEDEF DÜNYA KUPASI!</h1>
@@ -81,7 +97,7 @@
     <div class="show-card masasi">
       <div class="badge">FAZ 2</div>
       <div class="image-placeholder">
-        <img src="assets/img/show-masasi-0ff8d569.jpeg" alt="Kupa Duo" style="width:100%;height:100%;object-fit:cover;">
+        <img src="kupamasasi1-son-sunum.jpeg" alt="Kupa Masası - Faz 2" loading="lazy">
       </div>
       <div class="card-body">
         <h2>KUPA MASASI</h2>
@@ -107,7 +123,7 @@
     </div>
 
     <!-- KUPA DUO PHASE -->
-    <div class="phase-block duo open">
+    <div class="phase-block duo">
       <div class="phase-label accordion-toggle" onclick="this.parentElement.classList.toggle('open')">
         <span class="arrow accordion-arrow">➤</span>
         KUPA DUO <span class="yayinda-badge">YAYINDA</span>
@@ -333,8 +349,16 @@
         </div>
       </div>
       <div class="cpv-row">
+        <span class="cpv-label">BÜTÇE</span>
+        <span class="cpv-value">₺2.600.000 +KDV</span>
+      </div>
+      <div class="cpv-row">
         <span class="cpv-label">TAHMİNİ TOPLAM GÖRÜNTÜLEME</span>
         <span class="cpv-value">~5.66M</span>
+      </div>
+      <div class="cpv-row highlight">
+        <span class="cpv-label">CPV (Cost Per View)</span>
+        <span class="cpv-value accent">₺0,46</span>
       </div>
     </div>
   </div>
@@ -423,11 +447,11 @@
 
   
 <!-- INTEGRATION TYPES -->
-  <div class="integration-section">
-    <div class="timeline-header">
-      <div class="line"></div>
-      <h3>🎬 ENTEGRASYON ÇEŞİTLERİ</h3>
-      <div class="line"></div>
+  <div class="phase-block integration-section">
+    <div class="phase-label accordion-toggle" onclick="this.parentElement.classList.toggle('open')">
+      <span class="arrow accordion-arrow">➤</span>
+      ENTEGRASYON ÇEŞİTLERİ
+      <span class="accordion-hint">▼</span>
     </div>
 
     <div class="integ-compact">
@@ -472,7 +496,14 @@
         <div class="integ-row-items">
           <div class="integ-thumb"><div class="integ-thumb-img"><img src="assets/img/integ-thumb-d5877dcb.png" alt=""></div><a class="integ-name" href="https://www.youtube.com/watch?v=Bd9mcvleMMs&t=1604s" target="_blank">OMO</a></div>
           <div class="integ-thumb"><div class="integ-thumb-img"><img src="assets/img/integ-thumb-a6ef59ed.png" alt=""></div><a class="integ-name" href="https://youtu.be/udMiI2Kxwt8?feature=shared&t=1755" target="_blank">HP</a></div>
-          <div class="integ-thumb"><div class="integ-thumb-img"><img src="assets/img/integ-thumb-bcf2f8d2.jpeg" alt=""></div><a class="integ-name" href="https://www.youtube.com/watch?v=u-BuHb47h3c" target="_blank">S Sport Plus</a><div class="integ-badge">İNDİRİM KODU</div></div>
+        </div>
+      </div>
+
+      <!-- İNDİRİM KODU -->
+      <div class="integ-row">
+        <div class="integ-row-label">İNDİRİM KODU</div>
+        <div class="integ-row-items">
+          <div class="integ-thumb"><div class="integ-thumb-img"><img src="assets/img/integ-thumb-bcf2f8d2.jpeg" alt=""></div><a class="integ-name" href="https://www.youtube.com/watch?v=u-BuHb47h3c" target="_blank">S Sport Plus</a></div>
         </div>
       </div>
 
@@ -480,6 +511,127 @@
   </div>
 
   
+<!-- DİĞER BÜTÇELER + PAKETLER (detay-only) -->
+
+  <!-- DİĞER BÜTÇELER -->
+  <div class="phase-block extra">
+    <div class="phase-label accordion-toggle" onclick="this.parentElement.classList.toggle('open')">
+      <span class="arrow accordion-arrow">➤</span>
+      DİĞER BÜTÇELER
+      <span class="accordion-hint">▼</span>
+    </div>
+    <div class="phase-dates">4 format · münferit fiyatlar (13 bölüm)</div>
+
+    <div class="budget-grid">
+      <div class="budget-item">
+        <div class="budget-item-head">
+          <h4 class="budget-name">ENTEGRASYON</h4>
+          <span class="budget-price">₺2.600.000 +KDV</span>
+        </div>
+        <p class="budget-desc">Marka bölümün içine giriyor. Konuşuluyor, yaşanıyor, parça oluyor. Reklam değil — sohbet.</p>
+      </div>
+      <div class="budget-item">
+        <div class="budget-item-head">
+          <h4 class="budget-name">SUNDU / SUNAR</h4>
+          <span class="budget-price">₺1.820.000 +KDV</span>
+        </div>
+        <p class="budget-desc">"X sunar" diyoruz, bölüm seninle başlıyor. Rakip giremez. 13 bölüm = 13 imza.</p>
+      </div>
+      <div class="budget-item">
+        <div class="budget-item-head">
+          <h4 class="budget-name">ÜRÜN YERLEŞTİRME</h4>
+          <span class="budget-price">₺1.040.000 +KDV</span>
+        </div>
+        <p class="budget-desc">Marka kadrajda yaşıyor. Konuşmuyor ama orada. İzleyici farkında olmadan alışıyor.</p>
+      </div>
+      <div class="budget-item">
+        <div class="budget-item-head">
+          <h4 class="budget-name">ALTBANT</h4>
+          <span class="budget-price">₺650.000 +KDV</span>
+        </div>
+        <p class="budget-desc">Ekran altında akan logo, slogan, çağrı. Sade ama 13 bölüm tekrar = akılda kalır.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAKETLER -->
+  <div class="phase-block extra">
+    <div class="phase-label accordion-toggle" onclick="this.parentElement.classList.toggle('open')">
+      <span class="arrow accordion-arrow">➤</span>
+      PAKETLER
+      <span class="accordion-hint">▼</span>
+    </div>
+    <div class="phase-dates">4 paket · birleşik avantaj fiyatı (13 bölüm)</div>
+
+    <div class="packages-grid">
+      <div class="package-card tier-bronz">
+        <div class="package-head">
+          <span class="package-tier">BRONZ PAKET</span>
+          <h4 class="package-tagline">"Görünürlük"</h4>
+        </div>
+        <div class="package-includes">
+          <span class="incl-tag">Altbant</span>
+          <span class="incl-tag">Ürün Yerleştirme</span>
+        </div>
+        <div class="package-prices">
+          <span class="price-old">₺1.690.000 +KDV</span>
+          <span class="price-new">₺1.250.000 +KDV</span>
+        </div>
+        <p class="package-desc">Marka 13 bölüm boyunca hem ekran altında hem kadrajda. Konuşmadan, zorlamadan, sürekli görünürlük.</p>
+      </div>
+
+      <div class="package-card tier-altin">
+        <div class="package-head">
+          <span class="package-tier">ALTIN PAKET</span>
+          <h4 class="package-tagline">"Sahiplen"</h4>
+        </div>
+        <div class="package-includes">
+          <span class="incl-tag">Sundu</span>
+          <span class="incl-tag">Altbant</span>
+          <span class="incl-tag">Ürün Yerleştirme</span>
+        </div>
+        <div class="package-prices">
+          <span class="price-old">₺3.510.000 +KDV</span>
+          <span class="price-new">₺2.320.000 +KDV</span>
+        </div>
+        <p class="package-desc">Bölümün sahibi sensin. Açılışta "X sunar", sunucu konuşuyor, ürün sahnede, altbant akıyor. Entegrasyon dışında her format.</p>
+      </div>
+
+      <div class="package-card tier-ozel">
+        <div class="package-head">
+          <span class="package-tier">ÖZEL PAKET</span>
+          <h4 class="package-tagline">"Konuş &amp; Sahiplen"</h4>
+        </div>
+        <div class="package-includes">
+          <span class="incl-tag">Entegrasyon</span>
+          <span class="incl-tag">Sundu</span>
+        </div>
+        <div class="package-prices">
+          <span class="price-old">₺4.420.000 +KDV</span>
+          <span class="price-new">₺3.350.000 +KDV</span>
+        </div>
+        <p class="package-desc">Sadece en güçlü iki silah. Hem bölümün sahibi ol, hem içinde konuşul. Premium markalar için minimal ama maksimum.</p>
+      </div>
+
+      <div class="package-card tier-elmas">
+        <div class="package-head">
+          <span class="package-tier">ELMAS PAKET</span>
+          <h4 class="package-tagline">"Tam Kapsama"</h4>
+        </div>
+        <div class="package-includes">
+          <span class="incl-tag">Entegrasyon</span>
+          <span class="incl-tag">Sundu</span>
+          <span class="incl-tag">Altbant</span>
+          <span class="incl-tag">Ürün Yerleştirme</span>
+        </div>
+        <div class="package-prices">
+          <span class="price-old">₺6.110.000 +KDV</span>
+          <span class="price-new">₺3.970.000 +KDV</span>
+        </div>
+        <p class="package-desc">Hepsi senin. Bölüm seninle açılıyor, içinde konuşuluyor, kadrajda yaşıyor, altbant pekiştiriyor. Bir kampanya değil, bir marka dünyası.</p>
+      </div>
+    </div>
+  </div>
 <!-- GRAND TOTAL -->
   <div class="grand-total">
     <h4>GENEL TOPLAM</h4>
@@ -509,11 +661,39 @@
       <span class="total-all">130 İÇERİK</span>
       <span class="total-views">~5.66M TAHMİNİ GÖRÜNTÜLEME</span>
     </div>
-
+    <div class="grand-cpv-section">
+      <div class="cpv-row">
+        <span class="cpv-label">TOPLAM BÜTÇE</span>
+        <span class="cpv-value-stack">
+          <span class="cpv-value">₺2.600.000 +KDV</span>
+          <span class="cpv-format-badge">ENTEGRASYON FORMATI</span>
+        </span>
+      </div>
+      <div class="cpv-row highlight">
+        <span class="cpv-label">GENEL CPV (Cost Per View)</span>
+        <span class="cpv-value accent big">₺0,46</span>
+      </div>
+    </div>
   </div>
 
 
   
+<!-- DOWNLOAD BUTTONS -->
+  <div class="download-buttons">
+    <a class="download-btn" href="assets/kupa-sunum.pdf" download="Kupa-Sunum.pdf" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13z"/>
+      </svg>
+      <span>PDF olarak indir</span>
+    </a>
+    <a class="download-btn" href="assets/kupa-paketler.xlsx" download="Kupa-Paketler.xlsx">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zM8 17l2.5-3.5L13 17h2l-3.5-5L15 7h-2l-2 3-2-3H7l3.5 5L7 17h1z"/>
+      </svg>
+      <span>Excel olarak indir</span>
+    </a>
+  </div>
+
 <!-- FOOTER LOGO -->
   <div class="footer-logo">
     <a href="https://www.instagram.com/d20mediahouse/" target="_blank">
@@ -522,6 +702,7 @@
   </div>
 
 </div>
+<script src="assets/scripts.js" defer></script>
 </body>
 </html>
           
