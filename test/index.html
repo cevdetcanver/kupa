@@ -267,19 +267,47 @@
         iframe.setAttribute('allowfullscreen', '');
         videoBox.appendChild(iframe);
         videoBox.classList.add('active');
-        // iframe yüklendikten sonra YouTube'un kendi loading state'ini de
-        // noise altında bırakmak için fade'i geciktir
-        var fadeOut = function () {
-          setTimeout(function () {
-            noise.classList.remove('active');
-            if (logoLink) logoLink.classList.add('hidden');
-            var ctrl = document.getElementById('audio-controls');
-            if (ctrl) ctrl.classList.add('show');
-          }, 1000);
+
+        // Noise'u YouTube'un gerçekten PLAYING state'ine girene kadar tut.
+        // Böylece YT'nin kendi loading screen'i, kanal logosu, watermark vs
+        // hep noise altında kalır.
+        var faded = false;
+        var fadeNoise = function () {
+          if (faded) return;
+          faded = true;
+          noise.classList.remove('active');
+          if (logoLink) logoLink.classList.add('hidden');
+          var ctrl = document.getElementById('audio-controls');
+          if (ctrl) ctrl.classList.add('show');
         };
-        iframe.addEventListener('load', fadeOut);
-        // iframe.load fire etmezse fallback (max 3sn)
-        setTimeout(fadeOut, 3000);
+
+        // YouTube postMessage event listener — onStateChange = 1 (PLAYING)
+        window.addEventListener('message', function (e) {
+          if (e.origin !== 'https://www.youtube.com') return;
+          try {
+            var d = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
+            if (d && d.event === 'onStateChange' && d.info === 1) {
+              // Gerçekten oynamaya başladı; ufak bir tampon koyup söndür
+              setTimeout(fadeNoise, 200);
+            }
+          } catch (err) {}
+        });
+
+        // iframe yüklenince state-change subscription'ını gönder
+        iframe.addEventListener('load', function () {
+          iframe.contentWindow.postMessage(JSON.stringify({
+            event: 'listening',
+            id: 1
+          }), 'https://www.youtube.com');
+          iframe.contentWindow.postMessage(JSON.stringify({
+            event: 'command',
+            func: 'addEventListener',
+            args: ['onStateChange']
+          }), 'https://www.youtube.com');
+        });
+
+        // Hiç PLAYING gelmezse 5sn sonra zorla söndür (defensive fallback)
+        setTimeout(fadeNoise, 5000);
       }, 800);
     }, 1500);
   }
