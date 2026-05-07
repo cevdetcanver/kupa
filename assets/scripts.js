@@ -1,6 +1,9 @@
 // Hero TV-noise → YouTube video sequence
 (function () {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  // Mobilde sequence devre dışı — autoplay/iframe sorunları yaşanıyor,
+  // sadece logo gözüksün
+  if (window.matchMedia('(max-width: 900px)').matches) return;
 
   function startSequence() {
     var noise = document.querySelector('.hero-tv-noise');

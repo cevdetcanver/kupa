@@ -1748,3 +1748,25 @@
   .budget-price { font-size: 22px; }
   .cpv-value-stack { align-items: flex-start; }
 }
+
+/* Mobilde TV noise + YouTube video + audio kontrolleri tamamen kapalı.
+   Mobil tarayıcılarda autoplay/iframe ve absolute positioning sorunları
+   yaşanıyordu; sadece logo gözüksün. */
+@media (max-width: 900px) {
+  .hero-tv-noise,
+  .hero-tv-video,
+  .audio-controls,
+  .replay-btn { display: none !important; }
+  /* Logo full opacity'de kalsın (asla gizlenmesin) */
+  .hero-logo-link { opacity: 1 !important; pointer-events: auto !important; }
+  /* Hero column flex: logo dikey ortalı görünsün */
+  .hero-col-left { justify-content: center; }
+  /* Download butonları daha küçük + garantili tıklanabilir */
+  .download-btn {
+    font-size: 11px !important;
+    padding: 10px 14px !important;
+    letter-spacing: 1px !important;
+  }
+  .download-btn svg { width: 14px !important; height: 14px !important; }
+  .download-buttons { gap: 10px !important; margin-top: 32px !important; }
+}
