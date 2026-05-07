@@ -267,13 +267,19 @@
         iframe.setAttribute('allowfullscreen', '');
         videoBox.appendChild(iframe);
         videoBox.classList.add('active');
-        setTimeout(function () {
-          noise.classList.remove('active');
-          if (logoLink) logoLink.classList.add('hidden');
-          // sequence bittikten sonra ses kontrollerini göster
-          var ctrl = document.getElementById('audio-controls');
-          if (ctrl) ctrl.classList.add('show');
-        }, 400);
+        // iframe yüklendikten sonra YouTube'un kendi loading state'ini de
+        // noise altında bırakmak için fade'i geciktir
+        var fadeOut = function () {
+          setTimeout(function () {
+            noise.classList.remove('active');
+            if (logoLink) logoLink.classList.add('hidden');
+            var ctrl = document.getElementById('audio-controls');
+            if (ctrl) ctrl.classList.add('show');
+          }, 1000);
+        };
+        iframe.addEventListener('load', fadeOut);
+        // iframe.load fire etmezse fallback (max 3sn)
+        setTimeout(fadeOut, 3000);
       }, 800);
     }, 1500);
   }
