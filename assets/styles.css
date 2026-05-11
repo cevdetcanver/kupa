@@ -697,6 +697,49 @@
   .integration-section .phase-label { color: var(--accent-duo); }
   .integration-section .phase-label .arrow { background: var(--accent-duo); color: #fff; }
 
+  /* Sponsor CTA — sayfa sonu, download butonlarının üstünde */
+  .sponsor-cta {
+    text-align: center;
+    padding: 56px 16px 0;
+  }
+  .sponsor-cta-text {
+    font-size: 18px;
+    color: var(--text);
+    margin: 0 0 18px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .sponsor-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold), #c49530);
+    color: #181818;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 14px rgba(212, 168, 67, 0.18);
+  }
+  .sponsor-cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(212, 168, 67, 0.4);
+  }
+  .sponsor-cta-btn svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+  @media (max-width: 600px) {
+    .sponsor-cta { padding: 40px 12px 0; }
+    .sponsor-cta-text { font-size: 15px; margin-bottom: 14px; }
+    .sponsor-cta-btn { padding: 12px 20px; font-size: 12px; }
+    .sponsor-cta-btn svg { width: 16px; height: 16px; }
+  }
+
   /* Download buttons (PDF + Excel) above footer */
   .download-buttons {
     display: flex;
